@@ -6,7 +6,7 @@
 # add support for trend
 # add options for block kriging
 # add support for anisotropy
-# add support for other popular covariance models
+# add support for other popular covariance modelsno, 
 
 
 # Packages & options
