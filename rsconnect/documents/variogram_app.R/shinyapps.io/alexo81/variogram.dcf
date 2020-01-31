@@ -1,0 +1,13 @@
+name: variogram
+title: variogram
+username:
+account: alexo81
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1244476
+bundleId: 2449775
+url: https://alexo81.shinyapps.io/variogram/
+when: 1569593032.88483
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: README.md
