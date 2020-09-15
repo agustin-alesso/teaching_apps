@@ -72,12 +72,12 @@ ui <- fluidPage(
 # Define server
 server <- function(input, output) {
   
-  # Define simulation grid
+  # Define simulation grid 10x10
   x_sim <- y_sim <- seq(0, 200, by = 10)
   sim_grid <- expand.grid(x = x_sim, y = y_sim)
   gridded(sim_grid) <- ~ x + y
 
-  # Define prediction grid
+  # User's defined prediction grid
   pred_grid <- reactive({
     
     set.seed(1)
@@ -121,7 +121,7 @@ server <- function(input, output) {
     
     progress <- showNotification("Unconditional Gaussian simulation is in progress (it may take a while)", duration = NULL)
     
-    # Simulating on coarser grid
+    # Simulating on coarser grid 10x10
     g <- gstat(formula = z ~ 1, model = vm(), dummy = T, data = sim_grid, beta = 0)
     sims <- predict(g, newdata = sim_grid, nsim = 1)
     print(names(sims))
@@ -141,6 +141,12 @@ server <- function(input, output) {
 
     g <- gstat(id = "sim1", formula = sim1 ~ 1, model = vm(), data = sims)
     preds <- predict(g, newdata = pred_grid(), block = block)
+    
+    # Add nois from nugget component
+    n <- nrow(pred_grid())
+    sigma <- sd(sims$sim1)
+    preds$sim1.pred <- preds$sim1.pred + rnorm(n, mean = 0, sd = sigma*input$nugget/100) 
+    
     removeNotification(progress)
     showNotification("Interpolation has finished")
     
