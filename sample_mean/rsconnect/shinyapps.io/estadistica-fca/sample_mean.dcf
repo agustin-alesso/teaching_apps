@@ -1,0 +1,13 @@
+name: sample_mean
+title: sample_mean
+username:
+account: estadistica-fca
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6021375
+bundleId: 5767748
+url: https://estadistica-fca.shinyapps.io/sample_mean/
+when: 1649186396.86726
+lastSyncTime: 1649186396.86728
+asMultiple: FALSE
+asStatic: FALSE
